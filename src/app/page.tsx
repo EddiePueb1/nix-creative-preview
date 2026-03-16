@@ -18,14 +18,18 @@ export default function PreviewPage() {
     const data = {
       name: formData.get('name'),
       company: formData.get('company'),
-      email: formData.get('email'),
+      phone: formData.get('phone'),
       message: formData.get('message'),
+      access_key: "d068f863-fd50-4169-a849-9e1d2d2d51e0",
     };
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: "application/json"
+        },
         body: JSON.stringify(data),
       });
 
@@ -110,16 +114,28 @@ export default function PreviewPage() {
       </section>
 
       {/* What We Do Summary */}
-      <section id="services" className="py-24 bg-[#111111] text-white">
+      <section id="services" className="py-24 bg-[#111111] text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">What We Do.</h2>
             <p className="text-xl text-gray-400 max-w-2xl">
               We bring strategy, creative, and technology together to turn attention into action.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto"
+          >
             {/* Service 1 */}
             <div className="bg-[#1a1a1a] p-8 md:p-8 rounded-3xl border border-white/5 hover:border-[#b4ff39]/50 transition-colors w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm">
               <Globe className="w-10 h-10 text-[#b4ff39] mb-6" />
@@ -160,15 +176,21 @@ export default function PreviewPage() {
                 Precision-targeted campaigns that maximize ROI and drive instant acquisition.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* How We Operate */}
-      <section className="py-24 bg-[#f5f5f5]">
+      <section className="py-24 bg-[#f5f5f5] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
-            <div className="w-full md:w-1/2">
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="w-full md:w-1/2"
+            >
               <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-8">
                 How We Operate.
               </h2>
@@ -178,7 +200,14 @@ export default function PreviewPage() {
                   { title: "Design & Development", desc: "Crafting visually stunning assets and building robust digital infrastructure." },
                   { title: "Launch & Optimize", desc: "Deploying your solution and continuously refining it based on data." }
                 ].map((step, idx) => (
-                  <li key={idx} className="flex items-start gap-4">
+                  <motion.li 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 + (idx * 0.1) }}
+                    className="flex items-start gap-4"
+                  >
                     <div className="mt-1 bg-[#b4ff39] text-black w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0">
                       {idx + 1}
                     </div>
@@ -186,48 +215,71 @@ export default function PreviewPage() {
                       <h4 className="text-xl font-bold mb-2">{step.title}</h4>
                       <p className="text-gray-600">{step.desc}</p>
                     </div>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
-            <div className="w-full md:w-1/2 relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              className="w-full md:w-1/2 relative h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+            >
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="Our Collaborative Process"
                 className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Outcomes / Results */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
+      <section className="py-24 bg-white overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="max-w-7xl mx-auto px-4 md:px-8 text-center"
+        >
           <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-16">
             The Results Speak.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-[#f9f9f9] rounded-3xl">
-              <div className="text-5xl font-bold font-display text-black mb-4">+150%</div>
-              <div className="text-gray-600 font-medium">Average Organic Traffic Increase</div>
-            </div>
-            <div className="p-8 bg-[#f9f9f9] rounded-3xl">
-              <div className="text-5xl font-bold font-display text-black mb-4">3x</div>
-              <div className="text-gray-600 font-medium">Conversion Rate Improvement</div>
-            </div>
-            <div className="p-8 bg-[#f9f9f9] rounded-3xl">
-              <div className="text-5xl font-bold font-display text-black mb-4">98%</div>
-              <div className="text-gray-600 font-medium">Client Retention Rate</div>
-            </div>
+            {[
+              { stat: "+150%", label: "Average Organic Traffic Increase" },
+              { stat: "3x", label: "Conversion Rate Improvement" },
+              { stat: "98%", label: "Client Retention Rate" }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 + (idx * 0.1) }}
+                className="p-8 bg-[#f9f9f9] rounded-3xl"
+              >
+                <div className="text-5xl font-bold font-display text-black mb-4">{item.stat}</div>
+                <div className="text-gray-600 font-medium">{item.label}</div>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Contact Form Section */}
-      <section id="contact" className="py-32 bg-black text-white rounded-t-[3rem]">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
+      <section id="contact" className="py-32 bg-black text-white rounded-t-[3rem] overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto px-4 md:px-8"
+        >
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
               Ready to scale?
@@ -268,17 +320,30 @@ export default function PreviewPage() {
               </div>
             </div>
 
-            {/* Email field */}
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-gray-300 block">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="john@example.com"
-                className="w-full bg-[#1a1a1a] border border-white/5 rounded-xl px-5 py-4 focus:outline-none focus:border-[#b4ff39] focus:ring-1 focus:ring-[#b4ff39] transition-all text-white placeholder-gray-600"
-              />
+            {/* Email & Phone fields */ }
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-gray-300 block">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="john@example.com"
+                  className="w-full bg-[#1a1a1a] border border-white/5 rounded-xl px-5 py-4 focus:outline-none focus:border-[#b4ff39] focus:ring-1 focus:ring-[#b4ff39] transition-all text-white placeholder-gray-600"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="phone" className="text-sm font-medium text-gray-300 block">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  placeholder="(555) 123-4567"
+                  className="w-full bg-[#1a1a1a] border border-white/5 rounded-xl px-5 py-4 focus:outline-none focus:border-[#b4ff39] focus:ring-1 focus:ring-[#b4ff39] transition-all text-white placeholder-gray-600"
+                />
+              </div>
             </div>
 
             {/* Message field */}
@@ -319,7 +384,7 @@ export default function PreviewPage() {
               </p>
             )}
           </form>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
