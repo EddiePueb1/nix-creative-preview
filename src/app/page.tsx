@@ -386,6 +386,13 @@ export default function PreviewPage() {
           </form>
         </motion.div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-black py-8 border-t border-white/10 text-center">
+        <p className="text-sm text-gray-500 font-medium">
+          © 2026 Nix Creative, operated by Blue Analytics and Consulting LLC
+        </p>
+      </footer>
     </div>
   );
 }
